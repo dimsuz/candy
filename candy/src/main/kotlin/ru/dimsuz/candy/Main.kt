@@ -1,5 +1,7 @@
 package ru.dimsuz.candy
 
+import ru.dimsuz.candy.rule.CallSuperOnPostStart
+
 fun main() {
-  println("Hello World!")
+  CallSuperOnPostStart().run()
 }
