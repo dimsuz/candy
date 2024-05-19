@@ -16,7 +16,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.rememberScrollbarAdapter
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -41,6 +40,8 @@ import org.treesitter.TSParser
 import org.treesitter.TSTree
 import org.treesitter.TSTreeCursor
 import org.treesitter.TreeSitterKotlin
+import ru.dimsuz.candy.tester.uikit.AppTheme
+import ru.dimsuz.candy.tester.uikit.ColorTheme
 import ru.dimsuz.candy.tester.uikit.VSpacer
 
 const val STARTING_SOURCE_CODE = """
@@ -87,7 +88,7 @@ fun main() {
       }
     ) {
       var sourceCode by remember { mutableStateOf(TextFieldValue(STARTING_SOURCE_CODE.trimIndent())) }
-      MaterialTheme {
+      AppTheme(ColorTheme.Light) {
         Row(
           modifier = Modifier.fillMaxSize()
         ) {
@@ -114,7 +115,7 @@ fun main() {
             VSpacer(8.dp)
             Box(
               modifier = Modifier
-                .border(1.dp, MaterialTheme.colors.onBackground)
+                .border(1.dp, AppTheme.colors.bgInvertPrimary)
                 .weight(0.4f)
                 .padding(4.dp)
             ) {
@@ -141,7 +142,7 @@ private fun SourceCode(
   println("source code render")
   Box(
     modifier = modifier
-      .border(1.dp, MaterialTheme.colors.onBackground)
+      .border(1.dp, AppTheme.colors.bgInvertPrimary)
       .padding(4.dp)
       .verticalScroll(rememberScrollState())
   ) {
@@ -171,7 +172,7 @@ private fun Ast(
     // TODO make a LazyColumn?
     Box(
       modifier = Modifier
-        .border(1.dp, MaterialTheme.colors.onBackground)
+        .border(1.dp, AppTheme.colors.bgInvertPrimary)
         .padding(4.dp)
     ) {
       val scrollState = rememberScrollState()
